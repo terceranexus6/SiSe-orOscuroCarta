@@ -44,17 +44,51 @@
 		
 	</div>
   
-   <form>
-   Image link: <input type="text" name="im" placeholder="copy link here"><br>
-    <input type="submit" value="Submit">
-</form>
 
-<div>
-		<img src="value" alt="card" style="position: absolute; top:90px; left:30px; width:130px;">
-			
-	</div>
+<div id="paint" style="position: absolute; top: 70px; left: 30px;">
+  		<canvas id="myCanvas" width="137" height="150"></canvas>
+</div>
+
   
 </body>
+
+
+    <script>
+var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
+ 
+var painting = document.getElementById('paint');
+var paint_style = getComputedStyle(painting);
+
+var mouse = {x: 0, y: 0};
+ 
+canvas.addEventListener('mousemove', function(e) {
+  mouse.x = e.pageX - this.offsetLeft;
+  mouse.y = e.pageY - this.offsetTop;
+}, false);
+
+ctx.lineWidth = 3;
+ctx.lineJoin = 'round';
+ctx.lineCap = 'round';
+ctx.strokeStyle = '#00CC99';
+canvas.addEventListener('mousedown', function(e) {
+    ctx.beginPath();
+    ctx.moveTo(mouse.x, mouse.y);
+ 
+    canvas.addEventListener('mousemove', onPaint, false);
+}, false);
+ 
+canvas.addEventListener('mouseup', function() {
+    canvas.removeEventListener('mousemove', onPaint, false);
+}, false);
+ 
+var onPaint = function() {
+    ctx.lineTo(mouse.x, mouse.y);
+    ctx.stroke();
+};
+
+    </script>
+
 <script type='text/javascript'>
 function keypress(e) {
 	var key = e.keyCode;
