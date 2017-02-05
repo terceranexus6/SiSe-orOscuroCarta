@@ -1,0 +1,77 @@
+<html>
+<head>
+	<title>Si señor oscuro card generator</title>
+	<style>
+	.eo {
+		transform: skewY(0deg) skewX(0deg) rotateY(0deg) rotateX(0deg) rotateZ(0deg);
+		position: absolute;
+		left: 27px;
+		top: 220px;
+		width: 155px;
+		height: 50px;
+		text-shadow: 0 0 1px black;
+		color: transparent;
+		font-family: monospace;
+	}
+      .eo2 {
+		transform: skewY(0deg) skewX(0deg) rotateY(0deg) rotateX(0deg) rotateZ(0deg);
+		position: absolute;
+		left: 50px;
+		top: 40px;
+		width: 153px;
+		height: 50px;
+		text-shadow: 0 0 1px black;
+		color: transparent;
+		font-family: monospace;
+	}
+	
+	</style>
+
+</head>
+<body style='perspective: 400px'>
+
+<div style='margin: 50px; position: absolute; left: 0; top: 0; z-index: 50'>
+	<img src='http://68.media.tumblr.com/008b787526a87fa8afcf31c09fa7cf61/tumblr_okwnyzDCvD1rqtu34o1_250.jpg'/>  
+	<div class='eo' id='eo' contenteditable onkeypress='keypress(event);' style='font-size: 14px;' spellcheck='false'>
+		clickea y edita la descripción
+		<br/><br/>
+		
+	</div>
+  
+  <div class='eo2' id='eo2' contenteditable onkeypress='keypress(event);' style='font-size: 20px;' spellcheck='false'>
+		Título
+		<br/><br/>
+		
+	</div>
+  
+  <form action="demo_form.asp">
+   Image link: <input type="text" name="im" placeholder="copy link here"><br>
+    <input type="submit" value="Submit">
+</form>
+
+<div>
+		<img src="im" alt="card" style="position: absolute; top:90px; left:30px; width:130px;">
+			
+	</div>
+  
+</body>
+<script type='text/javascript'>
+function keypress(e) {
+	var key = e.keyCode;
+	if (key != 60 && key != 62) return;
+	var adj = (key == 60) ? -1 : +1;
+	var eo = document.getElementById('eo');
+	var size = parseInt(eo.style['font-size']);
+	eo.style['font-size'] = (size + adj) + 'px';
+	e.preventDefault();
+}
+</script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-758774-12', 'auto');
+  ga('send', 'pageview');
+</script>
+</html>
